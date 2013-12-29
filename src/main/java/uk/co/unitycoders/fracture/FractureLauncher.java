@@ -21,17 +21,23 @@ public class FractureLauncher {
         Floor floor = new Floor(ImageIO.read(loader.getResourceAsStream("floor.png")));
         Item wrench = new Item(ImageIO.read(loader.getResourceAsStream("wrench.png")));
         Item wall = new Item(ImageIO.read(loader.getResourceAsStream("wall.png")));
+        Item wall2 = new Item(ImageIO.read(loader.getResourceAsStream("wall_top.png")));
         Avatar avatar = new Avatar(ImageIO.read(loader.getResourceAsStream("avatar.png")));
 
+        for (int j=6; j>=0; j--) {
+            model.setItemAt(6, j, wall2);
+            model.setItemAt(j, 6, wall);
+            model.setItemAt(j, 0, wall);
+            model.setItemAt(0, j, wall2);
+        }
 
         for (int i=0; i<50; i++) {
-            model.setItemAt(i,5,wall);
             for (int j=0; j<50; j++) {
                 model.setFloorAt(i, j, floor);
             }
         }
-        model.setItemAt(5, 6, wrench);
-        model.setAvatarAt(5, 5, avatar);
+        model.setItemAt(7, 7, wrench);
+        model.setAvatarAt(3, 3, avatar);
 
         JFrame frame = SwingFactory.buildFrame();
 
