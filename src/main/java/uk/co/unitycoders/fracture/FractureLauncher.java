@@ -20,9 +20,12 @@ public class FractureLauncher {
         ClassLoader loader = FractureLauncher.class.getClassLoader();
         Floor floor = new Floor(ImageIO.read(loader.getResourceAsStream("floor.png")));
         Item wrench = new Item(ImageIO.read(loader.getResourceAsStream("wrench.png")));
+        Item wall = new Item(ImageIO.read(loader.getResourceAsStream("wall.png")));
         Avatar avatar = new Avatar(ImageIO.read(loader.getResourceAsStream("avatar.png")));
 
+
         for (int i=0; i<50; i++) {
+            model.setItemAt(i,5,wall);
             for (int j=0; j<50; j++) {
                 model.setFloorAt(i, j, floor);
             }

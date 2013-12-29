@@ -27,7 +27,7 @@ public class WorldComponent extends JComponent {
         int height = model.getHeight();
 
         g2.setColor(Color.WHITE);
-        for (int row = 0; row < height; row++) {
+        for (int row = height-1; row >= 0; row--) {
             for (int col = 0; col < width; col++) {
                 Graphics gTile = g2.create(row * 32, col * 32, 32, 32);
 
@@ -38,7 +38,12 @@ public class WorldComponent extends JComponent {
 
                 Item item = model.getItemAt(row, col);
                 if (item != null) {
-                    item.render(gTile);
+                    Dimension size = item.getSize();
+
+                    int offsetY = 32 - size.height;
+
+                    Graphics gItem = g2.create(row * 32, col * 32 + offsetY, size.width, size.height);
+                    item.render(gItem);
                 }
 
                 Avatar avatar = model.getAvatarAt(row, col);

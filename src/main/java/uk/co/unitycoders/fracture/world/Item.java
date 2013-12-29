@@ -13,6 +13,10 @@ public class Item {
         this.sprite = sprite;
     }
 
+    public Dimension getSize() {
+        return new Dimension(sprite.getWidth(), sprite.getHeight());
+    }
+
     public void render(Graphics g) {
         g.drawImage(sprite, 0, 0, null);
     }
