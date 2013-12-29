@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uk.co.unitycoders.fracture</groupId>
     <artifactId>fracture-rpg</artifactId>
     <version>0.1-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <build>
         <plugins>
@@ -32,5 +36,25 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <scm>
+        <tag>HEAD</tag>
+        <url>https://github.com/unitycoders/fracture-rpg</url>
+        <connection>scm:git:https://github.com/unitycoders/fracture-rpg</connection>
+        <developerConnection>scm:git:ssh://git@github.com:unitycoders/fracture-rpg.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>Github Issues</system>
+        <url>https://github.com/unitycoders/fracture-rpg/issues</url>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>GPL v3</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
 </project>
