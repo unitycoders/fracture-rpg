@@ -2,15 +2,18 @@ package uk.co.unitycoders.fracture.world;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by webpigeon on 28/12/13.
  */
 public class WorldComponent extends JComponent {
     private final WorldModel model;
+    private final ArtSet art;
 
-    public WorldComponent(WorldModel model) {
+    public WorldComponent(WorldModel model, ArtSet art) {
         this.model = model;
+        this.art = art;
     }
 
     protected void paintComponent(Graphics g1) {
@@ -33,22 +36,30 @@ public class WorldComponent extends JComponent {
 
                 Floor floor = model.getFloorAt(row, col);
                 if (floor != null) {
-                    floor.render(gTile);
+                    int type = floor.getType();
+                    BufferedImage typeImg = art.getFloor(type);
+                    gTile.drawImage(typeImg, 0, 0, null);
                 }
 
                 Item item = model.getItemAt(row, col);
                 if (item != null) {
-                    Dimension size = item.getSize();
+                    int type = item.getType();
+                    BufferedImage typeImg = art.getItem(type);
+
+
+                    Dimension size = new Dimension(typeImg.getWidth(), typeImg.getHeight());
 
                     int offsetY = 32 - size.height;
 
                     Graphics gItem = g2.create(row * 32, col * 32 + offsetY, size.width, size.height);
-                    item.render(gItem);
+                    gItem.drawImage(typeImg, 0, 0, null);
                 }
 
                 Avatar avatar = model.getAvatarAt(row, col);
                 if (avatar != null) {
-                    avatar.render(gTile);
+                    int type = avatar.getType();
+                    BufferedImage typeImg = art.getAvatar(type);
+                    gTile.drawImage(typeImg, 0, 0, null);
                 }
 
                 //g.drawRect(row * 32, col * 32, 32, 32);

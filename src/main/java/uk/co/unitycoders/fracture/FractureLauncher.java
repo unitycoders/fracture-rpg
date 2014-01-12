@@ -8,10 +8,9 @@ import uk.co.unitycoders.fracture.world.*;
 import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -26,11 +25,27 @@ public class FractureLauncher {
         WorldModel model = WorldFactory.buildWorldModel(50, 50);
 
         ClassLoader loader = FractureLauncher.class.getClassLoader();
-        Floor floor = new Floor(ImageIO.read(loader.getResourceAsStream("floor.png")));
-        Item wrench = new Item(ImageIO.read(loader.getResourceAsStream("wrench.png")), true);
-        Item wall = new Item(ImageIO.read(loader.getResourceAsStream("wall.png")), false);
-        Item wall2 = new Item(ImageIO.read(loader.getResourceAsStream("wall_top.png")), false);
-        Avatar avatar = new Avatar(ImageIO.read(loader.getResourceAsStream("avatar.png")));
+        BufferedImage[] floorImg = new BufferedImage[]{
+                ImageIO.read(loader.getResourceAsStream("floor.png"))
+        };
+
+        BufferedImage[] itemImg = new BufferedImage[]{
+                ImageIO.read(loader.getResourceAsStream("wrench.png")),
+                ImageIO.read(loader.getResourceAsStream("wall.png")),
+                ImageIO.read(loader.getResourceAsStream("wall_top.png"))
+        };
+
+        BufferedImage[] avatarImg = new BufferedImage[]{
+                ImageIO.read(loader.getResourceAsStream("avatar.png"))
+        };
+
+        ArtSet art = new ArtSet(itemImg, floorImg, avatarImg);
+
+        Floor floor = new Floor(0);
+        Item wrench = new Item(0, true);
+        Item wall = new Item(1, false);
+        Item wall2 = new Item(2, false);
+        Avatar avatar = new Avatar(0);
 
         for (int j=6; j>=0; j--) {
             model.setItemAt(6, j, wall2);
@@ -57,7 +72,7 @@ public class FractureLauncher {
         bottomPanel.setPreferredSize(new Dimension(800, 125));
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
-        WorldComponent component = new WorldComponent(model);
+        WorldComponent component = new WorldComponent(model, art);
         component.setFocusable(true);
         frame.add(component);
 
