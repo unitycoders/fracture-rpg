@@ -1,7 +1,9 @@
 package uk.co.unitycoders.fracture.world;
 
+import javax.persistence.Entity;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 /**
  * Created by webpigeon on 28/12/13.
