@@ -42,9 +42,9 @@ public class FractureLauncher {
         ArtSet art = new ArtSet(itemImg, floorImg, avatarImg);
 
         Floor floor = new Floor(0);
-        Item wrench = new Item(0, true);
-        Item wall = new Item(1, false);
-        Item wall2 = new Item(2, false);
+        Item wrench = new Item(0, true, true);
+        Item wall = new Item(1, false, false);
+        Item wall2 = new Item(2, false, false);
         Avatar avatar = new Avatar(0);
 
         for (int j=6; j>=0; j--) {
@@ -59,6 +59,8 @@ public class FractureLauncher {
                 model.setFloorAt(i, j, floor);
             }
         }
+
+        model.setItemAt(3, 6, null);
         model.setItemAt(7, 7, wrench);
         model.setAvatarAt(3, 3, avatar);
 

@@ -1,8 +1,6 @@
 package uk.co.unitycoders.fracture.engine;
 
-import uk.co.unitycoders.fracture.world.Avatar;
-import uk.co.unitycoders.fracture.world.Item;
-import uk.co.unitycoders.fracture.world.WorldModel;
+import uk.co.unitycoders.fracture.world.*;
 
 import java.awt.*;
 
@@ -42,8 +40,15 @@ public class PlayerSessionIpl implements PlayerSession {
         System.out.println("move "+dx+","+dy);
 
         Point currentPos = avatar.getPoint();
-        model.setAvatarAt(currentPos.x, currentPos.y, null);
-        model.setAvatarAt(currentPos.x + dx, currentPos.y + dy, avatar);
+        Point newPoint = new Point(currentPos.x + dx, currentPos.y + dy);
+
+        Floor floor = model.getFloorAt(newPoint.x, newPoint.y);
+        Item item = model.getItemAt(newPoint.x, newPoint.y);
+
+        if (item == null || item.hasAttribute(Attribute.WALKABLE)) {
+            model.setAvatarAt(currentPos.x, currentPos.y, null);
+            model.setAvatarAt(newPoint.x, newPoint.y, avatar);
+        }
     }
 
     @Override
