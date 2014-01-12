@@ -2,9 +2,13 @@ package uk.co.unitycoders.fracture;
 
 import uk.co.unitycoders.fracture.engine.PlayerSession;
 import uk.co.unitycoders.fracture.engine.PlayerSessionIpl;
+import uk.co.unitycoders.fracture.storage.JPAFactory;
 import uk.co.unitycoders.fracture.world.*;
 
 import javax.imageio.ImageIO;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -15,6 +19,8 @@ import java.io.IOException;
 public class FractureLauncher {
 
     public static void main(String[] args) throws IOException {
+        EntityManagerFactory emf = JPAFactory.buildFactory();
+
         WorldModel model = WorldFactory.buildWorldModel(50, 50);
 
         ClassLoader loader = FractureLauncher.class.getClassLoader();
