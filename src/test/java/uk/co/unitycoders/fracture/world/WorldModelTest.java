@@ -28,7 +28,7 @@ public class WorldModelTest {
         //params
         int x = 0;
         int y = 0;
-        Floor floor = new Floor(null);
+        Floor floor = new Floor(0);
 
         //test
         model.setFloorAt(x, y, floor);
@@ -44,7 +44,7 @@ public class WorldModelTest {
         //params
         int x = 0;
         int y = 0;
-        Item item = new Item(null);
+        Item item = new Item(0, false, false);
 
         //test
         model.setItemAt(x, y, item);
@@ -60,7 +60,7 @@ public class WorldModelTest {
         //params
         int x = 0;
         int y = 0;
-        Avatar avatar = new Avatar(null);
+        Avatar avatar = new Avatar(0);
 
         //test
         model.setAvatarAt(x, y, avatar);
@@ -100,7 +100,7 @@ public class WorldModelTest {
         //params
         int x = 13;
         int y = 12;
-        Floor demo = new Floor(null);
+        Floor demo = new Floor(0);
 
         //test
         model.setFloorAt(x, y, demo);
@@ -113,7 +113,7 @@ public class WorldModelTest {
         //params
         int x = 7;
         int y = 17;
-        Floor demo = new Floor(null);
+        Floor demo = new Floor(0);
 
         //test
         model.setFloorAt(x, y, demo);
