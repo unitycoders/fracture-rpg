@@ -5,5 +5,8 @@ target/
 .idea/workspace.xml
 .idea/tasks.xml
 
+# Fracture/Java stuff
+derby.log
+
 # Fedora Stuff
 abrt_checker_*.log

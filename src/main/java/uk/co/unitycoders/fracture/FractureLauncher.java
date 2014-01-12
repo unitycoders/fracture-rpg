@@ -6,6 +6,7 @@ import uk.co.unitycoders.fracture.storage.JPAFactory;
 import uk.co.unitycoders.fracture.world.*;
 
 import javax.imageio.ImageIO;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
@@ -20,6 +21,7 @@ public class FractureLauncher {
 
     public static void main(String[] args) throws IOException {
         EntityManagerFactory emf = JPAFactory.buildFactory();
+        EntityManager em = emf.createEntityManager();
 
         WorldModel model = WorldFactory.buildWorldModel(50, 50);
 
