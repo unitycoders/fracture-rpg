@@ -51,8 +51,12 @@ public class PlayerSessionIpl implements PlayerSession {
         Point currentPos = avatar.getPoint();
         Item item = model.getItemAt(currentPos.x, currentPos.y);
         if (item != null) {
-            System.out.println("picked up item at: "+item);
-            model.setItemAt(currentPos.x, currentPos.y, null);
+            if (item.isGettable()) {
+                System.out.println("picked up item at: "+item);
+                model.setItemAt(currentPos.x, currentPos.y, null);
+            } else {
+                System.out.println("asked to pick up item, but not gettable "+item);
+            }
         }
     }
 

@@ -8,13 +8,19 @@ import java.awt.image.BufferedImage;
  */
 public class Item {
     private BufferedImage sprite;
+    private boolean isGettable;
 
-    public Item(BufferedImage sprite) {
+    public Item(BufferedImage sprite, boolean gettable) {
         this.sprite = sprite;
+        this.isGettable = gettable;
     }
 
     public Dimension getSize() {
         return new Dimension(sprite.getWidth(), sprite.getHeight());
+    }
+
+    public boolean isGettable() {
+        return isGettable;
     }
 
     public void render(Graphics g) {

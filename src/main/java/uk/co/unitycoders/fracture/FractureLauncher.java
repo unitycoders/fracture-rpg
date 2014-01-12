@@ -19,9 +19,9 @@ public class FractureLauncher {
 
         ClassLoader loader = FractureLauncher.class.getClassLoader();
         Floor floor = new Floor(ImageIO.read(loader.getResourceAsStream("floor.png")));
-        Item wrench = new Item(ImageIO.read(loader.getResourceAsStream("wrench.png")));
-        Item wall = new Item(ImageIO.read(loader.getResourceAsStream("wall.png")));
-        Item wall2 = new Item(ImageIO.read(loader.getResourceAsStream("wall_top.png")));
+        Item wrench = new Item(ImageIO.read(loader.getResourceAsStream("wrench.png")), true);
+        Item wall = new Item(ImageIO.read(loader.getResourceAsStream("wall.png")), false);
+        Item wall2 = new Item(ImageIO.read(loader.getResourceAsStream("wall_top.png")), false);
         Avatar avatar = new Avatar(ImageIO.read(loader.getResourceAsStream("avatar.png")));
 
         for (int j=6; j>=0; j--) {
