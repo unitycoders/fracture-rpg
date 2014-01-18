@@ -16,6 +16,21 @@ class WorldModelIpl implements WorldModel {
         this.size = new Dimension(rows, cols);
     }
 
+    public WorldModelIpl(int rows, int cols) {
+        this(rows, cols, new Cell[rows * cols]);
+        initCells();
+    }
+
+    private void initCells() {
+        for (int i=0; i<size.width; i++) {
+            for (int j=0; j<size.height; j++) {
+                Cell cell = new Cell();
+                cell.point = new WorldPoint(i, j);
+                cells[posToInt(i,j)] = cell;
+            }
+        }
+    }
+
     @Override
     public Floor getFloorAt(int x, int y) {
         if (!checkValues(x, y)) {

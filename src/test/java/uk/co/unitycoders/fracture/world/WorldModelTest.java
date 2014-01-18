@@ -44,7 +44,7 @@ public class WorldModelTest {
         //params
         int x = 0;
         int y = 0;
-        Item item = new Item(0, false, false);
+        Item item = new Item(0, null);
 
         //test
         model.setItemAt(x, y, item);
