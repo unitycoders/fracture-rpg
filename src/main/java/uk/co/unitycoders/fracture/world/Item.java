@@ -10,18 +10,9 @@ public class Item {
     private int typeID;
     private Set<Attribute> attributes;
 
-    public Item(int typeID, boolean walkable, boolean gettable) {
+    public Item(int typeID, Set<Attribute> attributeSet) {
         this.typeID = typeID;
-
-        attributes = EnumSet.noneOf(Attribute.class);
-
-        if(walkable) {
-            attributes.add(Attribute.WALKABLE);
-        }
-
-        if (gettable) {
-            attributes.add(Attribute.GETTABLE);
-        }
+        this.attributes = attributeSet;
     }
 
     public boolean hasAttribute(Attribute attr) {

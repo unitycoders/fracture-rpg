@@ -2,19 +2,16 @@
 	{
 		"id": 0,
 		"name": "Wrench",
-		"gettable": true,
-		"walkable": true
+		"attrs": ["WALKABLE", "GETTABLE"]
 	},
 	{
 		"id": 1,
 		"name": "Wall",
-		"gettable": false,
-		"walkable": false
+		"attrs": []
 	},
 	{
 		"id": 2,
 		"name": "Wall (tall)",
-		"gettable": false,
-		"walkable": false
+		"attrs": []
 	}
 ]
