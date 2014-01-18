@@ -1,0 +1,21 @@
+[
+	{
+		"id": 0,
+		"name": "Wrench",
+		"gettable": true,
+		"walkable": true
+	},
+	{
+		"id": 1,
+		"name": "Wall",
+		"gettable": false,
+		"walkable": false
+	},
+	{
+		"id": 2,
+		"name": "Wall (tall)",
+		"gettable": false,
+		"walkable": false
+	}
+
+]

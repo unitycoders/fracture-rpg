@@ -1,0 +1,23 @@
+{
+	"items": {
+		"0": {
+			"id": 0,
+			"name": "Wrench",
+			"gettable": true,
+			"walkable": true
+		},
+		"1": {
+			"id": 1,
+			"name": "Wall",
+			"gettable": false,
+			"walkable": false
+		},
+		"2": {
+			"id": 2,
+			"name": "Wall (tall)",
+			"gettable": false,
+			"walkable": false
+		}
+	}
+}
+

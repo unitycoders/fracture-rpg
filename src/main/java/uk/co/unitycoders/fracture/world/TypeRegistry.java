@@ -18,6 +18,12 @@ public class TypeRegistry {
         this.avatars = new TreeMap<Integer, Avatar>();
     }
 
+    public TypeRegistry(Map<Integer, Item> items, Map<Integer,Floor> floors) {
+        this.items = items;
+        this.floors = floors;
+        this.avatars = new TreeMap<Integer, Avatar>();
+    }
+
     public void addItem(int id, Item item) {
         items.put(id, item);
     }
