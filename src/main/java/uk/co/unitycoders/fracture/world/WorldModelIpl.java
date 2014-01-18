@@ -6,16 +6,21 @@ import java.awt.*;
  * Created by webpigeon on 28/12/13.
  */
 class WorldModelIpl implements WorldModel {
-    private final Floor[] floors;
-    private final Item[] items;
+    private final Cell[] cells;
     private final Avatar[] avatars;
     private final Dimension size;
 
     public WorldModelIpl(int rows, int cols) {
-        this.floors = new Floor[rows * cols];
-        this.items = new Item[rows * cols];
+        this.cells = new Cell[rows * cols];
         this.avatars = new Avatar[rows * cols];
         this.size = new Dimension(rows, cols);
+        buildWorld();
+    }
+
+    private void buildWorld() {
+        for (int i=0; i<cells.length; i++) {
+            cells[i] = new Cell();
+        }
     }
 
     @Override
@@ -23,7 +28,7 @@ class WorldModelIpl implements WorldModel {
         if (!checkValues(x, y)) {
             throw new IllegalArgumentException("Invalid range for x or y");
         }
-        return floors[posToInt(x, y)];
+        return cells[posToInt(x, y)].floor;
     }
 
     @Override
@@ -31,7 +36,7 @@ class WorldModelIpl implements WorldModel {
         if (!checkValues(x, y)) {
             throw new IllegalArgumentException("Invalid range for x or y");
         }
-        floors[posToInt(x, y)] = floor;
+        cells[posToInt(x, y)].floor = floor;
     }
 
     @Override
@@ -39,7 +44,7 @@ class WorldModelIpl implements WorldModel {
         if (!checkValues(x, y)) {
             throw new IllegalArgumentException("Invalid range for x or y");
         }
-        return items[posToInt(x, y)];
+        return cells[posToInt(x, y)].item;
     }
 
     @Override
@@ -47,7 +52,7 @@ class WorldModelIpl implements WorldModel {
         if (!checkValues(x, y)) {
             throw new IllegalArgumentException("Invalid range for x or y");
         }
-        items[posToInt(x, y)] = item;
+        cells[posToInt(x, y)].item = item;
     }
 
     @Override

@@ -20,5 +20,6 @@ public class TaskManager {
 
     public void addTask(Task task) {
         service.submit(task);
+        task.setManager(emf.createEntityManager());
     }
 }
