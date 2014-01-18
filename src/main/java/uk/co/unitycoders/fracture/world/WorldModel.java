@@ -78,4 +78,6 @@ public interface WorldModel {
      * @return the height of the current world
      */
     public int getHeight();
+
+    Cell getCellAt(int row, int col);
 }

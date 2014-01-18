@@ -90,6 +90,11 @@ class WorldModelIpl implements WorldModel {
         return size.height;
     }
 
+    @Override
+    public Cell getCellAt(int row, int col) {
+        return cells[posToInt(row, col)];
+    }
+
     private int posToInt(int x, int y) {
         return y * size.width + x;
     }

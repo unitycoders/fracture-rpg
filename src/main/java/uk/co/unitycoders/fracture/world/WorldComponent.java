@@ -37,14 +37,16 @@ public class WorldComponent extends JComponent {
             for (int col = 0; col < width; col++) {
                 Graphics gTile = g2.create(row * 32, col * 32, 32, 32);
 
-                Floor floor = model.getFloorAt(row, col);
+                Cell cell = model.getCellAt(row, col);
+
+                Floor floor = cell.floor;
                 if (floor != null) {
                     int type = floor.getType();
                     BufferedImage typeImg = art.getFloor(type);
                     gTile.drawImage(typeImg, 0, 0, null);
                 }
 
-                Item item = model.getItemAt(row, col);
+                Item item = cell.item;
                 if (item != null) {
                     int type = item.getType();
                     BufferedImage typeImg = art.getItem(type);
