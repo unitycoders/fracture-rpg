@@ -10,17 +10,10 @@ class WorldModelIpl implements WorldModel {
     private final Avatar[] avatars;
     private final Dimension size;
 
-    public WorldModelIpl(int rows, int cols) {
-        this.cells = new Cell[rows * cols];
+    public WorldModelIpl(int rows, int cols, Cell[] cells) {
+        this.cells = cells;
         this.avatars = new Avatar[rows * cols];
         this.size = new Dimension(rows, cols);
-        buildWorld();
-    }
-
-    private void buildWorld() {
-        for (int i=0; i<cells.length; i++) {
-            cells[i] = new Cell();
-        }
     }
 
     @Override

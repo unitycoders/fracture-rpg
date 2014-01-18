@@ -12,8 +12,8 @@ import java.util.TreeMap;
  */
 public class WorldFactory {
 
-    public static WorldModel buildWorldModel(int rows, int cols) {
-        return new WorldModelIpl(rows, cols);
+    public static WorldModel buildWorldModel(int rows, int cols, Cell[] cells) {
+        return new WorldModelIpl(rows, cols, cells);
     }
 
     public static TypeRegistry buildRegistry() throws IOException {

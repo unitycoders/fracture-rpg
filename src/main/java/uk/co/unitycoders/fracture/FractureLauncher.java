@@ -24,12 +24,24 @@ public class FractureLauncher {
         EntityManager em = emf.createEntityManager();
 
         TaskManager manager = new TaskManager(emf);
-        WorldModel model = WorldFactory.buildWorldModel(50, 50);
 
         ArtSet art = SwingFactory.buildDemoArt();
         TypeRegistry registry = WorldFactory.buildRegistry();
 
         Avatar avatar = new Avatar(0);
+
+        Cell[] cells = new Cell[50 * 50];
+        for (int i=0; i<50; i++) {
+            for (int j=0; j<50; j++) {
+                Cell cell = new Cell();
+                cell.point = new WorldPoint(i, j);
+                cell.floor = registry.getFloor(0);
+
+                cells[MathUtils.PosToCell(cell.point, 50)] = cell;
+            }
+        }
+
+        WorldModel model = WorldFactory.buildWorldModel(50, 50, cells);
 
         for (int j=6; j>=0; j--) {
             model.setItemAt(6, j, registry.getItem(2));
@@ -38,14 +50,10 @@ public class FractureLauncher {
             model.setItemAt(0, j, registry.getItem(2));
         }
 
-        for (int i=0; i<50; i++) {
-            for (int j=0; j<50; j++) {
-                model.setFloorAt(i, j, registry.getFloor(0));
-            }
-        }
-
         model.setItemAt(3, 6, null);
         model.setItemAt(7, 7, registry.getItem(0));
+
+
         model.setAvatarAt(3, 3, avatar);
 
         JFrame frame = SwingFactory.buildFrame();
