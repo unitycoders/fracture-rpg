@@ -2,6 +2,7 @@ package uk.co.unitycoders.fracture;
 
 import uk.co.unitycoders.fracture.engine.PlayerSession;
 import uk.co.unitycoders.fracture.engine.PlayerSessionIpl;
+import uk.co.unitycoders.fracture.engine.TaskManager;
 import uk.co.unitycoders.fracture.storage.JPAFactory;
 import uk.co.unitycoders.fracture.world.*;
 
@@ -22,6 +23,7 @@ public class FractureLauncher {
         EntityManagerFactory emf = JPAFactory.buildFactory();
         EntityManager em = emf.createEntityManager();
 
+        TaskManager manager = new TaskManager(emf);
         WorldModel model = WorldFactory.buildWorldModel(50, 50);
 
         ArtSet art = SwingFactory.buildDemoArt();
@@ -54,7 +56,7 @@ public class FractureLauncher {
         component.setFocusable(true);
         frame.add(component);
 
-        PlayerSession session = new PlayerSessionIpl(model, avatar);
+        PlayerSession session = new PlayerSessionIpl(manager, model, avatar);
         PlayerKeyboardController controller = new PlayerKeyboardController(session, component);
         component.addKeyListener(controller);
 

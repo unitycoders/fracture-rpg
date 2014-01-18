@@ -26,4 +26,5 @@ public class Item {
     public int getType() {
         return typeID;
     }
+
 }

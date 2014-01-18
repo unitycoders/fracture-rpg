@@ -10,8 +10,10 @@ import java.awt.*;
 public class PlayerSessionIpl implements PlayerSession {
     private WorldModel model;
     private Avatar avatar;
+    private TaskManager manager;
 
-    public PlayerSessionIpl(WorldModel model, Avatar avatar) {
+    public PlayerSessionIpl(TaskManager manager, WorldModel model, Avatar avatar) {
+        this.manager = manager;
         this.model = model;
         this.avatar = avatar;
     }
@@ -37,18 +39,7 @@ public class PlayerSessionIpl implements PlayerSession {
     }
 
     private void move(int dx, int dy) {
-        System.out.println("move "+dx+","+dy);
-
-        Point currentPos = avatar.getPoint();
-        Point newPoint = new Point(currentPos.x + dx, currentPos.y + dy);
-
-        Floor floor = model.getFloorAt(newPoint.x, newPoint.y);
-        Item item = model.getItemAt(newPoint.x, newPoint.y);
-
-        if (item == null || item.hasAttribute(Attribute.WALKABLE)) {
-            model.setAvatarAt(currentPos.x, currentPos.y, null);
-            model.setAvatarAt(newPoint.x, newPoint.y, avatar);
-        }
+        manager.addTask(new MovementTask(avatar, model, new Point(dx, dy)));
     }
 
     @Override
