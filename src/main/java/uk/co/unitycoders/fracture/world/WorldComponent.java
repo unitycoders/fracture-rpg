@@ -12,8 +12,11 @@ public class WorldComponent extends JComponent {
     private final ArtSet art;
 
     public WorldComponent(WorldModel model, ArtSet art) {
+        super();
         this.model = model;
         this.art = art;
+        this.setSize(model.getWidth() * 32, model.getHeight() * 32);
+        this.setPreferredSize(new Dimension(model.getWidth() * 32, model.getHeight() * 32));
     }
 
     protected void paintComponent(Graphics g1) {
